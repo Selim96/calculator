@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./index.css" />
+    <title>Calculator</title>
+  </head>
+  <body>
+    <div class="inputs_section">
+      <label class="storage_lable">
+        Storage: <span class="storage_span lable_value">1</span> GB
+        <input
+          type="range"
+          name="storage"
+          id="storage"
+          value="0"
+          min="1"
+          max="1000"
+          step="1"
+        />
+      </label>
+      <label class="transfer_lable">
+        Transfer: <span class="transfer_span lable_value">1</span> GB
+        <input
+          type="range"
+          name="transfer"
+          id="transfer"
+          value="0"
+          min="1"
+          max="1000"
+          step="1"
+        />
+      </label>
+    </div>
+    <div class="schedule_container">
+      <div class="provaiders_names"></div>
+      <div class="provaiders_icons"></div>
+      <div class="schedule">
+        <div class="schedule_item">
+          <span class="column"></span>
+          <span class="value" style="color: red"></span>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="./index.js" type="module"></script>
+</html>

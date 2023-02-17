@@ -1,0 +1,19 @@
+{
+  "name": "calculator",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Selim96/calculator.git"
+  },
+  "author": "Selim <selim.fazylov1@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Selim96/calculator/issues"
+  },
+  "homepage": "https://github.com/Selim96/calculator#readme"
+}
