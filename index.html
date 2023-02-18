@@ -10,7 +10,17 @@
   <body>
     <div class="inputs_section">
       <label class="storage_lable">
-        Storage: <span class="storage_span lable_value">1</span> GB
+        Storage:
+        <input
+          id="inputStorage"
+          type="number"
+          name="inputStorage"
+          min="0"
+          max="1000"
+          class="input"
+          value="0"
+        />
+        GB
         <input
           type="range"
           name="storage"
@@ -22,7 +32,17 @@
         />
       </label>
       <label class="transfer_lable">
-        Transfer: <span class="transfer_span lable_value">1</span> GB
+        Transfer:
+        <input
+          id="inputTransfer"
+          type="number"
+          name="inputTransfer"
+          min="0"
+          max="1000"
+          class="input"
+          value="0"
+        />
+        GB
         <input
           type="range"
           name="transfer"
