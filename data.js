@@ -2,6 +2,7 @@ export const provaiders = [
     {
         name: "backblaze",
         icon: null,
+        color: "rgba(243, 53, 53, 0.527)",
         values: {
             minPrice: 7,
             maxPrice: +Infinity,
@@ -14,6 +15,7 @@ export const provaiders = [
     {
         name: "bunny",
         icon: null,
+        color: "rgba(248, 146, 50, 0.527)",
         values: {
             minPrice: 0,
             maxPrice: 10,
@@ -29,6 +31,7 @@ export const provaiders = [
     {
         name: "scaleway",
         icon: null,
+        color: "rgba(248, 55, 206, 0.527)",
         values: {
             minPrice: 0,
             maxPrice: +Infinity,
@@ -44,6 +47,7 @@ export const provaiders = [
     {
         name: "vultr",
         icon: null,
+        color: "rgba(55, 155, 248, 0.527)",
         values: {
             minPrice: 5,
             maxPrice: +Infinity,

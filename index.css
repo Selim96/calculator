@@ -34,11 +34,14 @@ a {
     background-color: rgba(148, 208, 235, 0.384);
 }
 
-.column {
-    background-color: rgba(147, 247, 163, 0.726);
-}
+
 
 .lable_value {
     width: 35px;
     display: inline-block;
+    color: rgba(55, 155, 248, 0.527);
 }
+
+/* .schedule_item .column {
+  background-color: yellow;
+} */
