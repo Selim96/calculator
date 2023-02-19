@@ -76,7 +76,7 @@ function renderSignatures() {
                         ${Object.keys(storage)[1]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[1]}  class="inputBtn"/>
                     </label> 
                 </div>
-                <img src=${icon} alt="provaider icon" width=30 height=30 class="signature_icon"/>
+                <img src=${icon ? icon : "./public"} alt="provaider icon" width=30 height=30 class="signature_icon"/>
             </div>`
         }
         return `<div class="signature">
