@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/Selim96/calculator/issues"
   },
-  "homepage": "https://github.com/Selim96/calculator#readme"
+  "homepage": "https://github.com/Selim96/calculator#readme",
+  "dependencies": {
+    "sass": "^1.58.3"
+  },
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  }
 }
