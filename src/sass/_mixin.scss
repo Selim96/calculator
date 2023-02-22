@@ -1,0 +1,18 @@
+@mixin mq($range) {
+  $mobile: 480px;
+  $tablet: 860px;
+
+    @if $range == mobile {
+    @media (min-width: $mobile) {
+      @content;
+    }
+  } @else if $range == tablet-only {
+    @media  (max-width: #{$tablet - 0.02}) {
+      @content;
+    }
+  } @else if $range == tablet {
+    @media (min-width: $tablet) {
+      @content;
+    }
+  }
+}

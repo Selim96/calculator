@@ -1,5 +1,6 @@
 import { provaiders } from './data.js';
-
+import './sass/main.scss';
+import pic from '../public/icon.webp'
 
 const refs = {
     storageInput: document.querySelector('#storage'),
@@ -10,8 +11,11 @@ const refs = {
     provaidersSchedule: document.querySelector('.schedule'),
 };
 
-let storageValue = 500;
-let transferValue = 500;
+const TABLET_WIDTH = 860;
+const MOBILE_WIDTH = 480;
+
+let storageValue = 1;
+let transferValue = 1;
 let switcher = [];
 let minValues = [];
 
@@ -30,6 +34,10 @@ refs.transferInput.addEventListener("input", changeTransferValue);
 refs.handlInputStorage.addEventListener("input", handlChangeStorage);
 
 refs.handlInputTransfer.addEventListener("input", handlChangeTransfer);
+
+window.onresize = renderColumns;
+// window.onresize = changeColor ;
+window.addEventListener("resize", (e)=> changeColor())
 
 function renderColumns() {
     const markup = provaiders.map(({ values, color }, index) => {
@@ -52,8 +60,8 @@ function renderColumns() {
         }
         minValues.push(result);
         
-        return `<div class="schedule_item">
-                    <div class="column" style="width: ${result * 10}px; height: 30px; " data-result=${result} data-color="${color}"></div>
+        return `<div class="schedule_item" style="width: ${window.innerWidth < TABLET_WIDTH && `calc((100% - 15px)/${provaiders.length})`};">
+                    <div class="column" style="width: ${window.innerWidth >= TABLET_WIDTH ? `${(result * 5)}px` : "80%"}; height: ${window.innerWidth < TABLET_WIDTH ? `${(result * 5)}px` : "75%"};" data-result=${result} data-color="${color}"></div>
                     <span class="value" >$${result.toFixed(2)}</span>
                 </div>`
     }).join("");
@@ -68,7 +76,7 @@ function renderSignatures() {
         if ((typeof storage) === "object") {
             switcher.push({id: index, type: Object.keys(storage)[0]})
             return `<div class="signature">
-                <div class="signature_name name_switcher">
+                <div class="name_switcher">
                     <p class="signature_name">${name}</p>
                     <label class="">
                         ${Object.keys(storage)[0]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[0]} checked  class="inputBtn"/>
@@ -77,12 +85,12 @@ function renderSignatures() {
                         ${Object.keys(storage)[1]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[1]}  class="inputBtn"/>
                     </label> 
                 </div>
-                <img src=${icon ? icon : "./public"} alt="provaider icon" width=30 height=30 class="signature_icon"/>
+                <img src="${icon ? icon : pic}" alt="provaider icon" width="30" height="30" class="signature_icon"/>
             </div>`
         }
         return `<div class="signature">
-            <span class="signature_name">${name}</span>
-            <img src=${icon} alt="provaider icon" width=30 height=30 class="signature_icon"/>
+            <p class="signature_name">${name}</p>
+            <img src="${icon ? icon : pic}" alt="provaider icon" width=30 height=30 class="signature_icon"/>
         </div>`
     }).join("");
     refs.provaidersNames.innerHTML = namesMarkup;
