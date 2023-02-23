@@ -63,16 +63,70 @@
     margin-bottom: 30px;
     display: flex;
     flex-direction: column-reverse;
+    @include mq(tablet) {
+        flex-direction: row;
+        justify-content: center;
+    }
 }
 
 .provaiders_names {
     display: flex;
-    min-width: 400px;
+    justify-content: space-between;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgba(229, 238, 238, 0.747);
+    border-bottom-right-radius: 20px;
+    border-bottom-left-radius: 20px;
+    @include mq(tablet) {
+        width: 220px;
+        flex-direction: column;
+        border-top-left-radius: 20px;
+        border-bottom-right-radius: 0;
+    }
 
     & .signature {
         display: flex;
-        flex-direction: column-reverse;
+        flex-direction: column;
         align-items: center;
+        box-sizing: border-box;
+        @include mq(tablet) {
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+    }
+    & .signature_name {
+        text-transform: capitalize;
+        text-align: center;
+        font-size: 16px;
+        font-weight: 600;
+        margin-top: 5px;
+        @include mq(tablet) {
+            text-align: start;
+        }
+    }
+    & .name_switcher {
+        font-size: 12px;
+        font-weight: 400;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        &>label {
+            display: inline-block;
+            width: 56px;
+        }
+        &>label:first-child {
+            margin-right: 12px;
+        }
+    }
+    & img {
+        border-radius: 5px;
+        box-shadow: 0px 10px 8px 2px rgba(0,0,0,0.1),-4px 8px 2px -2px rgba(0,0,0,0.1);
+        @include mq(tablet) {
+            width: 45px;
+            height: 45px;
+        }
     }
 }
 
@@ -85,6 +139,7 @@
     border-top-left-radius: 15px;
     background-color: rgba(125, 189, 218, 0.74);;
     @include mq(tablet) {
+        width: 600px;
         flex-direction: column;
         border-left: solid 2px black;
         border-bottom: none;
@@ -97,15 +152,20 @@
         flex-direction: column-reverse;
         align-items: center;
         height: 100%;
-        
         @include mq(tablet) {
             flex-direction: row;
         }
 
         & .column {
-            
+        }
+        & .value {
+            background-color: white;
+            border-radius: 5px;
+            padding: 2px 5px;
+            margin-bottom: 5px;
+            font-weight: 600;
             @include mq(tablet) {
-                
+                margin-left: 5px;
             }
         }
     }

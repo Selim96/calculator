@@ -12,7 +12,7 @@ const refs = {
 };
 
 const TABLET_WIDTH = 860;
-const MOBILE_WIDTH = 480;
+// const MOBILE_WIDTH = 480;
 
 let storageValue = 1;
 let transferValue = 1;
@@ -23,9 +23,15 @@ renderSignatures();
 renderColumns();
 changeColor();
 
+window.addEventListener("resize", addListenerOnSignature);
+window.onresize = renderColumns;
+// window.onresize = changeColor ;
+window.addEventListener("resize", (e) => changeColor());
+
+
 const allInputs = document.querySelectorAll(".inputBtn");
 
-allInputs.forEach((item)=>{item.addEventListener("change", handlChangeSwitcher)})
+allInputs.forEach((item) => { item.addEventListener("change", handlChangeSwitcher) });
 
 refs.storageInput.addEventListener("input", changeStorageValue);
 
@@ -35,9 +41,6 @@ refs.handlInputStorage.addEventListener("input", handlChangeStorage);
 
 refs.handlInputTransfer.addEventListener("input", handlChangeTransfer);
 
-window.onresize = renderColumns;
-// window.onresize = changeColor ;
-window.addEventListener("resize", (e)=> changeColor())
 
 function renderColumns() {
     const markup = provaiders.map(({ values, color }, index) => {
@@ -60,8 +63,8 @@ function renderColumns() {
         }
         minValues.push(result);
         
-        return `<div class="schedule_item" style="width: ${window.innerWidth < TABLET_WIDTH && `calc((100% - 15px)/${provaiders.length})`};">
-                    <div class="column" style="width: ${window.innerWidth >= TABLET_WIDTH ? `${(result * 5)}px` : "80%"}; height: ${window.innerWidth < TABLET_WIDTH ? `${(result * 5)}px` : "75%"};" data-result=${result} data-color="${color}"></div>
+        return `<div class="schedule_item" style=${getItemSize()}>
+                    <div class="column" style=${getColumnSize(result)} data-result=${result} data-color="${color}"></div>
                     <span class="value" >$${result.toFixed(2)}</span>
                 </div>`
     }).join("");
@@ -74,27 +77,37 @@ function renderSignatures() {
         const { storage } = values;
         
         if ((typeof storage) === "object") {
-            switcher.push({id: index, type: Object.keys(storage)[0]})
-            return `<div class="signature">
-                <div class="name_switcher">
-                    <p class="signature_name">${name}</p>
-                    <label class="">
-                        ${Object.keys(storage)[0]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[0]} checked  class="inputBtn"/>
-                    </label>
-                    <label class="">
-                        ${Object.keys(storage)[1]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[1]}  class="inputBtn"/>
-                    </label> 
-                </div>
+            switcher.push({ id: index, type: Object.keys(storage)[0] })
+            return `<div class="signature" style=${getItemSize()}>
                 <img src="${icon ? icon : pic}" alt="provaider icon" width="30" height="30" class="signature_icon"/>
+                <div>
+                    <p class="signature_name">${name}</p>
+                    <div class="name_switcher">
+                        <label class="">
+                            ${Object.keys(storage)[0]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[0]}  ${switcher.find(item=>item.id === index).type === Object.keys(storage)[0] && "checked"} class="inputBtn"/>
+                        </label>
+                        <label class="">
+                            ${Object.keys(storage)[1]} <input type="radio" id="${index}" name="storageType${index}" value=${Object.keys(storage)[1]} ${switcher.find(item=>item.id === index).type === Object.keys(storage)[1] && "checked"} class="inputBtn"/>
+                        </label> 
+                    </div>
+                </div>
             </div>`
         }
-        return `<div class="signature">
-            <p class="signature_name">${name}</p>
+        return `<div class="signature" style=${getItemSize()}>
             <img src="${icon ? icon : pic}" alt="provaider icon" width=30 height=30 class="signature_icon"/>
+            <p class="signature_name">${name}</p>
         </div>`
     }).join("");
     refs.provaidersNames.innerHTML = namesMarkup;
-}
+};
+
+function getColumnSize(result) {
+    return window.innerWidth >= TABLET_WIDTH ? `"width: ${(result * 5)}px; height: 75%;"` : `"width: 75%; height: ${(result * 5)}px;"`
+};
+
+function getItemSize() {
+    return window.innerWidth < TABLET_WIDTH ? `"width: calc((100% - 15px)/${provaiders.length}); height: 100%"` : `"width: 100%; height: calc((100% - 15px)/${provaiders.length});"`
+};
 
 function changeStorageValue(e) {
     const currentValue = e.currentTarget.value;
@@ -128,7 +141,7 @@ function handlChangeTransfer(e) {
     transferValue = currentValue <= 1000 ? currentValue : 1000;;
     renderColumns();
     changeColor()
-}
+};
 
 function handlChangeSwitcher(e) {
     switcher.forEach(item => {
@@ -138,7 +151,7 @@ function handlChangeSwitcher(e) {
     });
     renderColumns();
     changeColor();
-}
+};
 
 function changeColor() {
     const allColumns = document.querySelectorAll(".column");
@@ -146,4 +159,10 @@ function changeColor() {
         item.style.backgroundColor = Number(item.dataset.result) === Math.min(...minValues) ? item.dataset.color : "rgba(109, 108, 108, 0.39)";
     });
     minValues = [];
-}
+};
+
+function addListenerOnSignature(e) {
+    renderSignatures();
+    const allInputs = document.querySelectorAll(".inputBtn");
+    allInputs.forEach((item) => { item.addEventListener("change", handlChangeSwitcher) });
+};
