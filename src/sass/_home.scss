@@ -2,7 +2,7 @@
     height: 100vh;
     box-sizing: border-box;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
     padding-top: 50px;
     padding-bottom: 80px;
     padding-right: 20px;
@@ -10,7 +10,8 @@
     background-color: rgba(125, 188, 218, 0.39);
     @include mq(tablet) {
         display: flex;
-        flex-direction: column;
+        flex-direction: column-reverse;
+        justify-content: flex-end;
         padding-right: 40px;
         padding-left: 40px;
     }
@@ -20,22 +21,28 @@
     display: flex;
     flex-direction: column;
     // background-color: rgba(109, 108, 108, 0.39);
-    margin-bottom: 30px;
     @include mq(tablet) {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        margin-bottom: 30px;
     }
 
     & .inputs {
         display: flex;
         flex-direction: column;
-        margin-bottom: 35px;
+        &:first-child {
+            margin-bottom: 35px;
+        }
+        
         @include mq(tablet) {
             min-width: 300px;
             padding-left: 15px;
             padding-right: 15px;
             margin-right: 15px;
+            &:first-child {
+            margin-bottom: 0;
+        }
         }
     }
     & .input_lable {
@@ -133,7 +140,7 @@
 }
 
 .schedule {
-    height: 400px;
+    height: 430px;
     display: flex;
     justify-content: space-between;
     border-bottom: solid 2px black;
