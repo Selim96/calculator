@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "parcel src/index.html",
-    "build": "parcel build src/index.html",
+    "build": "parcel build src/index.html --public-url /calculator/",
+    "deploy": "gh-pages -d dist",
+    "predeploy": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,9 +19,12 @@
   "bugs": {
     "url": "https://github.com/Selim96/calculator/issues"
   },
-  "homepage": "https://github.com/Selim96/calculator",
+  "homepage": "https://Selim96.github.io/calculator",
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "sass": "^1.58.3"
+  },
+  "dependencies": {
+    "gh-pages": "^5.0.0"
   }
 }
