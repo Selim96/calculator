@@ -1,4 +1,6 @@
 .main_section {
+    height: 100vh;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column-reverse;
     padding-top: 50px;
@@ -78,7 +80,7 @@
     border-bottom-right-radius: 20px;
     border-bottom-left-radius: 20px;
     @include mq(tablet) {
-        width: 220px;
+        width: 230px;
         flex-direction: column;
         border-top-left-radius: 20px;
         border-bottom-right-radius: 0;
@@ -107,14 +109,14 @@
         }
     }
     & .name_switcher {
-        font-size: 12px;
+        font-size: 15px;
         font-weight: 400;
         display: flex;
         justify-content: center;
         flex-wrap: wrap;
         &>label {
             display: inline-block;
-            width: 56px;
+            width: 65px;
         }
         &>label:first-child {
             margin-right: 12px;
