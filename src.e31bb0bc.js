@@ -294,7 +294,6 @@ function renderColumns() {
       freeStorage = values.freeStorage,
       freeTransfer = values.freeTransfer;
     var result = 0;
-    if (storageValue <= 1000 && transferValue <= 1000) {}
     if (_typeof(storage) !== "object") {
       var columnSize = (storageValue > freeStorage ? storageValue - freeStorage : 0) * storage + (transferValue > freeTransfer ? transferValue - freeTransfer : 0) * transfer;
       result = columnSize < maxPrice ? columnSize < minPrice ? minPrice : columnSize : maxPrice;
@@ -426,7 +425,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54945" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57957" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

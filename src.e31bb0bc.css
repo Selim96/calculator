@@ -197,7 +197,7 @@ p {
 }
 .provaiders_names .name_switcher > label {
   display: inline-block;
-  width: 67px;
+  width: 70px;
 }
 .provaiders_names .name_switcher > label:first-child {
   margin-right: 9px;
