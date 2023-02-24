@@ -48,9 +48,6 @@ function renderColumns() {
 
         let result = 0;
 
-        if (storageValue <= 1000 && transferValue <= 1000) {
-            
-        }
         if ((typeof storage) !== "object") {
             const columnSize = (storageValue > freeStorage ? (storageValue - freeStorage) : 0) * storage + (transferValue > freeTransfer ? (transferValue - freeTransfer) : 0) * transfer;
 
