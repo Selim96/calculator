@@ -4,8 +4,8 @@
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
-    padding-bottom: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     padding-right: 20px;
     padding-left: 20px;
     background-color: rgba(125, 188, 218, 0.39);
@@ -13,6 +13,8 @@
         display: flex;
         flex-direction: column-reverse;
         justify-content: flex-end;
+        padding-top: 50px;
+        padding-bottom: 80px;
         padding-right: 40px;
         padding-left: 40px;
     }
@@ -151,7 +153,7 @@
 }
 
 .schedule {
-    height: 430px;
+    height: 266px;
     display: flex;
     justify-content: space-between;
     border-bottom: solid 2px black;
@@ -160,6 +162,7 @@
     background-color: rgba(125, 189, 218, 0.74);;
     @include mq(tablet) {
         width: 550px;
+        height: 450px;
         flex-direction: column;
         border-left: solid 2px black;
         border-bottom: none;

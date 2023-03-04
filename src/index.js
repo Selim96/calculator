@@ -11,6 +11,8 @@ const refs = {
     provaidersSchedule: document.querySelector('.schedule'),
 };
 
+const COLUMN_COEFF_MOB = 3;
+const COLUMN_COEFF_TAB = 5;
 const TABLET_WIDTH = 860;
 // const MOBILE_WIDTH = 480;
 
@@ -99,7 +101,7 @@ function renderSignatures() {
 };
 
 function getColumnSize(result) {
-    return window.innerWidth >= TABLET_WIDTH ? `"width: ${(result * 5)}px; height: 75%;"` : `"width: 75%; height: ${(result * 5)}px;"`
+    return window.innerWidth >= TABLET_WIDTH ? `"width: ${(result * COLUMN_COEFF_TAB)}px; height: 75%;"` : `"width: 75%; height: ${(result * COLUMN_COEFF_MOB)}px;"`
 };
 
 function getItemSize() {
